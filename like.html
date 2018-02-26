@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .main{
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+            border: 1px solid #000;
+            box-shadow: 2px 4px 6px #000;
+            height: 200px;
+            width: 400px;
+        }
+        .top{
+            text-align: center;
+            line-height: 50px;
+        }
+        .bottom{
+            margin-top:120px ;
+            position: relative;
+        }
+        .like{
+            position: absolute;
+            right: 100px;
+            width: 60px;
+        }
+        .unlike{
+            position: absolute;
+            right: 20px;
+            width:60px;
+            top:0;
+            transition:all 1s ease ;
+            -webkit-transition:all 1s ease ; /* Safari */
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="top">你喜欢我吗?</div>
+    <div class="bottom">
+        <button class="like">喜欢</button>
+        <button class="unlike">不喜欢</button>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    var like = document.querySelector(".like");
+    var unlike = document.querySelector(".unlike");
+    var flag = false;
+    unlike.onmouseenter = function () {
+        if(!flag){
+            if(Math.floor(Math.random()*10+1) > 5){
+                unlike.innerHTML = "喜欢";
+                unlike.onmouseleave = function () {
+                    unlike.innerHTML = "不喜欢"
+                }
+            }else{
+                flag = true;
+                unlike.style.top = "-50px"
+            }
+        }else{
+            flag = false;
+            unlike.style.top = "0px"
+        }
+    }
+    like.onclick = function () {
+        alert("我就知道你喜欢我~");
+    }
+    unlike.onclick = function () {
+        alert("你只能喜欢我~");
+    }
+</script>
